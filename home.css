@@ -5,3 +5,24 @@ body {
     font-family: 'inter', sans-serif;
 
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #eee;
+    align-items: center;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+
+}
