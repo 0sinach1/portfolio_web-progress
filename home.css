@@ -26,3 +26,27 @@ body {
     color: black;
 
 }
+
+#hero {
+    padding: 50px;
+    /* outline: 1px solid; */
+}
+
+#hero h1 {
+    font-size: 60px;
+}
+
+#hero p {
+    font-size: 29px;
+}
+
+#hero a {
+    /* margin: 0px 0px 0px 0px; */
+    border: solid 1px #000;
+    padding: 8px 25px 8px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    /* margin: 0px; */
+    font-size: 20px;
+    color: #000;
+}
