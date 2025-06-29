@@ -47,17 +47,17 @@ body {
     padding: 8px 25px 8px 25px;
     border-radius: 8px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px;
     color: #000;
 }
 
-#exp {
+#edu {
     margin: 20px 30px 20px 30px;
     padding: 0px 0px 20px 20px;
     /* padding: up right down left; */
 }
 
-#exp h3 {
+#edu h3 {
     font-size: 30px;
 }
 
@@ -90,6 +90,22 @@ body {
     align-content: center;
     justify-items: center;
     border-radius: 8px;
+}
+
+.tab h4{
+    font-size: 22px;
+    font-weight: 500;
+    margin: 10px 0px 0px 0px;
+}
+.tab h5{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0px 0px 0px 0px;
+
+}
+.tab p{
+    font-size: 15px;
+    font-weight: 100;
 }
 
 #tabs a {
