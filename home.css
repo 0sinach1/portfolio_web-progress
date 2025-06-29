@@ -19,6 +19,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    gap: 50px;
 }
 
 .navbar a {
@@ -68,13 +69,18 @@ body {
 }
 
 .backpoint {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     display: flex;
     border-radius: 30px;
     background-color: #a6a9ac72;
     align-items: center;
     justify-content: center;
+}
+
+.backpoint i{
+    font-size: 25px;
+    color: #000;
 }
 
 .tab {
