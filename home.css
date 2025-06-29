@@ -151,7 +151,6 @@ body {
     padding: auto;
     align-self: center;
     background-color: #ffffff;
-    /* align-items: center; */
 
 }
 
@@ -164,14 +163,12 @@ body {
 .write h3 {
     font-size: 26px;
     font-weight: 550;
-    /* color: #eee; */
 }
 
 .write p {
     font-size: 18px;
     width: 700px;
     display: flex;
-    /* word-wrap: break-word; */
 }
 
 .write .buttons {
