@@ -64,6 +64,7 @@ body {
     gap: 50px;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .backpoint {
@@ -85,6 +86,14 @@ body {
     border-radius: 8px;
 }
 
-#tabs {
-    
+#tabs a {
+    text-decoration: none;
+    color: #000;
+    border: 1px solid black;
+    display: inline-flex;
+    height: 20px;
+    padding: 8px 35px 8px 35px;
+    justify-content: center;
+    position: relative;
+    bottom: -220px;
 }
