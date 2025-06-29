@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #f5f5f5;
     color: #121212;
     transition: all 0.3s ease-in-out;
     font-family: 'inter', sans-serif;
@@ -25,7 +25,6 @@ body {
 .navbar a {
     text-decoration: none;
     color: black;
-
 }
 
 #hero {
@@ -47,12 +46,13 @@ body {
     padding: 8px 25px 8px 25px;
     border-radius: 8px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
+    background-color: #ffffff;
     color: #000;
 }
 
 #edu {
-    margin: 20px 30px 20px 30px;
+    margin: 100px 30px 100px 30px;
     padding: 0px 0px 20px 20px;
     /* padding: up right down left; */
 }
@@ -78,7 +78,7 @@ body {
     justify-content: center;
 }
 
-.backpoint i{
+.backpoint i {
     font-size: 25px;
     color: #000;
 }
@@ -90,20 +90,23 @@ body {
     align-content: center;
     justify-items: center;
     border-radius: 8px;
+    background-color: #ffffff;
 }
 
-.tab h4{
+.tab h4 {
     font-size: 22px;
     font-weight: 500;
     margin: 10px 0px 10px 0px;
 }
-.tab h5{
+
+.tab h5 {
     font-size: 18px;
     font-weight: 500;
     margin: 0px 0px 0px 0px;
 
 }
-.tab p{
+
+.tab p {
     font-size: 15px;
     font-weight: 100;
 }
@@ -117,7 +120,70 @@ body {
     padding: 8px 35px 8px 35px;
     justify-content: center;
     position: absolute;
-    bottom: -300px;
+    bottom: -385px;
     right: 100px;
     background-color: #ffffff;
+}
+
+.pro {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 100px 30px 100px 30px;
+    padding: 0px 0px 20px 20px;
+    /* background-color: aqua; */
+}
+
+.pro h3 {
+    font-size: 30px;
+}
+
+.showcase {
+    display: flex;
+    gap: 20px;
+    border-radius: 10px;
+    border: 1px solid;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 1100px;
+    padding: auto;
+    align-self: center;
+    background-color: #ffffff;
+    /* align-items: center; */
+
+}
+
+.showcase .image {
+    width: 250px;
+    height: 250px;
+    background-color: #a6a9ac72;
+}
+
+.write h3 {
+    font-size: 26px;
+    font-weight: 550;
+    /* color: #eee; */
+}
+
+.write p {
+    font-size: 18px;
+    width: 700px;
+    display: flex;
+    /* word-wrap: break-word; */
+}
+
+.write .buttons {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+.write .buttons a {
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #000;
+    padding: 5px 25px 5px 25px;
+    border-radius: 5px;
 }
