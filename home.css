@@ -46,7 +46,45 @@ body {
     padding: 8px 25px 8px 25px;
     border-radius: 8px;
     text-decoration: none;
-    /* margin: 0px; */
     font-size: 20px;
     color: #000;
+}
+
+#exp {
+    margin: 20px 30px 20px 30px;
+    padding: 0px 0px 20px 20px;
+    /* padding: up right down left; */
+}
+
+#exp h3 {
+    font-size: 30px;
+}
+
+#tabs {
+    gap: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.backpoint {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    border-radius: 30px;
+    background-color: #a6a9ac72;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab {
+    width: 250px;
+    height: 300px;
+    border: 1px solid #000;
+    align-content: center;
+    justify-items: center;
+    border-radius: 8px;
+}
+
+#tabs {
+    
 }
