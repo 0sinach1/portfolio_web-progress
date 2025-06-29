@@ -5,12 +5,17 @@ body {
     font-family: 'inter', sans-serif;
 
 }
-
+a{
+    transition: .5s;
+}
+a:hover{
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    transition: .5s ease-in-out;  
+}
 .navbar {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
-    background-color: #eee;
     align-items: center;
 }
 
@@ -25,6 +30,7 @@ body {
 .navbar a {
     text-decoration: none;
     color: black;
+    background-color: transparent;
 }
 
 #hero {
@@ -139,6 +145,21 @@ body {
     font-size: 30px;
 }
 
+.sa{
+    display: flex;
+    align-self: center;
+    margin: 20px 0px 20px 0px;
+    padding: 8px 25px 8px 25px;
+    width: 200px;
+    height: 20px;
+    justify-content: center;
+    border: 1px solid;
+    font-size: 17px;
+    text-decoration: none;
+    color: #000;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
 .showcase {
     display: flex;
     gap: 20px;
@@ -149,10 +170,10 @@ body {
     height: 300px;
     width: 1100px;
     padding: auto;
+    margin-left: -70px;
     align-self: center;
     background-color: #ffffff;
-
-}
+} 
 
 .showcase .image {
     width: 250px;
