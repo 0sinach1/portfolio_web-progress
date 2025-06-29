@@ -31,6 +31,12 @@ a {
     background-color: transparent;
 }
 
+.navbar a:hover{
+    /* text-decoration: underline; */
+    transition: .5s;
+    font-size: 18px;
+}
+
 #hero {
     padding: 50px;
     /* outline: 1px solid; */
