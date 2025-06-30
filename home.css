@@ -227,3 +227,39 @@ a {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
     transition: .5s ease-in-out;
 }
+
+footer{
+    display: flex;
+    background-color: azure;
+    flex-direction: column;padding: 10px 25px 15px 25px;
+}
+.contact-info{
+    display: flex;
+    align-items: center;
+}
+
+.contact-info .info span{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.contact-info ul{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.contact-info ul li{
+    color: #000;
+    text-decoration: none;
+}
+
+.contact-icons{
+    display: flex;
+    font-size: 25px;
+    gap: 20px;
+}
+
+.close{
+    
+}
