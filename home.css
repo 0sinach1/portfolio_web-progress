@@ -365,3 +365,11 @@ footer{
     transition: .5s;
     border-radius: 50%;
 }
+
+input:checked+.slider {
+    background-color: #76b16b;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
