@@ -1,0 +1,38 @@
+body {
+    background-color: #f5f5f5;
+    color: #121212;
+    transition: all 0.3s ease-in-out;
+    font-family: 'inter', sans-serif;
+
+}
+
+a {
+    transition: .5s;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    align-items: center;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 50px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
+}
+
+.navbar a:hover{
+    /* text-decoration: underline; */
+    transition: .5s;
+    font-size: 18px;
+}
