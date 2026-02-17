@@ -1,36 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Github, Mail, Linkedin, Twitter, Youtube, ExternalLink, Star, GitFork, Code, ArrowUpRight } from 'lucide-react';
 
 const Portfolio = () => {
   const [repos, setRepos] = useState([]);
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const githubUsername = '0sinach1';
   
-  const pinnedProjects = [
-    {
-      name: 'fraud-detection-project',
-      description: 'Machine learning model to detect fraudulent transactions using classification algorithms. Built with Python, scikit-learn, and data visualization libraries.',
-      tech: ['Python', 'Scikit-learn', 'Pandas', 'Jupyter']
-    },
-    {
-      name: 'house-price-model',
-      description: 'Predictive model for Nigerian housing market using regression analysis. Analyzes property features to estimate market values.',
-      tech: ['Python', 'NumPy', 'Matplotlib', 'Machine Learning']
-    },
-    {
-      name: 'data-and-ai-portfolio',
-      description: 'Comprehensive collection of data science and AI projects. Showcases end-to-end workflows from data cleaning to model deployment.',
-      tech: ['Python', 'Jupyter', 'Data Analysis', 'ML']
-    },
-    {
-      name: 'laptop-sleep-timer',
-      description: 'Automated solution for managing laptop power settings. Python script that schedules sleep mode to optimize battery life and system performance.',
-      tech: ['Python', 'Automation', 'System Programming']
-    }
-  ];
+const pinnedProjects = useMemo(() => [
+  {
+    name: 'fraud-detection-project',
+    description: 'Machine learning model to detect fraudulent transactions using classification algorithms. Built with Python, scikit-learn, and data visualization libraries.',
+    tech: ['Python', 'Scikit-learn', 'Pandas', 'Jupyter']
+  },
+  {
+    name: 'house-price-model',
+    description: 'Predictive model for Nigerian housing market using regression analysis. Analyzes property features to estimate market values.',
+    tech: ['Python', 'NumPy', 'Matplotlib', 'Machine Learning']
+  },
+  {
+    name: 'data-and-ai-portfolio',
+    description: 'Comprehensive collection of data science and AI projects. Showcases end-to-end workflows from data cleaning to model deployment.',
+    tech: ['Python', 'Jupyter', 'Data Analysis', 'ML']
+  }
+], []);
 
   useEffect(() => {
     const fetchGitHubData = async () => {
@@ -71,27 +65,18 @@ const Portfolio = () => {
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     }, 100);
 
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
 
-    window.addEventListener('mousemove', handleMouseMove);
+  }, [pinnedProjects]);
 
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
 
+  
   const ProjectCard = ({ repo, pinnedInfo, index }) => {
-    const [isHovered, setIsHovered] = useState(false);
+    
 
     return (
       <div 
         className="project-card fade-in"
         style={{ animationDelay: `${index * 0.1}s` }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
       >
         <div className="project-header">
           <div className="project-number">
