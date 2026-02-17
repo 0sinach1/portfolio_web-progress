@@ -31,31 +31,30 @@ const Portfolio = () => {
     }
   ];
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    const fetchGitHubData = async () => {
-      try {
-        const userResponse = await fetch(`https://api.github.com/users/${githubUsername}`);
-        const userData = await userResponse.json();
-        setStats(userData);
+  const fetchGitHubData = async () => {
+    try {
+      const userResponse = await fetch(`https://api.github.com/users/${githubUsername}`);
+      const userData = await userResponse.json();
+      setStats(userData);
 
-        const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=100`);
-        const reposData = await reposResponse.json();
-        
-        const pinnedRepos = reposData.filter(repo => 
-          pinnedProjects.some(p => p.name === repo.name)
-        );
-        
-        setRepos(pinnedRepos);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching GitHub data:', error);
-        setLoading(false);
-      }
-    };
+      const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=100`);
+      const reposData = await reposResponse.json();
+      
+      const pinnedRepos = reposData.filter(repo => 
+        pinnedProjects.some(p => p.name === repo.name)
+      );
+      
+      setRepos(pinnedRepos);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching GitHub data:', error);
+      setLoading(false);
+    }
+  };
 
-    fetchGitHubData();
-  }, []);
+  fetchGitHubData();
+}, []);
 
   const ProjectCard = ({ repo, pinnedInfo, index }) => {
     return (
