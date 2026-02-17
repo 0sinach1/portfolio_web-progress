@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Github, Mail, Linkedin, Twitter, Youtube, ExternalLink, Star, GitFork, Code, ArrowUpRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Github, Mail, Linkedin, Twitter, Youtube, Star, GitFork, Code, ArrowUpRight } from 'lucide-react';
 
 const Portfolio = () => {
   const [repos, setRepos] = useState([]);
@@ -8,23 +8,28 @@ const Portfolio = () => {
 
   const githubUsername = '0sinach1';
   
-const pinnedProjects = useMemo(() => [
-  {
-    name: 'fraud-detection-project',
-    description: 'Machine learning model to detect fraudulent transactions using classification algorithms. Built with Python, scikit-learn, and data visualization libraries.',
-    tech: ['Python', 'Scikit-learn', 'Pandas', 'Jupyter']
-  },
-  {
-    name: 'house-price-model',
-    description: 'Predictive model for Nigerian housing market using regression analysis. Analyzes property features to estimate market values.',
-    tech: ['Python', 'NumPy', 'Matplotlib', 'Machine Learning']
-  },
-  {
-    name: 'data-and-ai-portfolio',
-    description: 'Comprehensive collection of data science and AI projects. Showcases end-to-end workflows from data cleaning to model deployment.',
-    tech: ['Python', 'Jupyter', 'Data Analysis', 'ML']
-  }
-], []);
+  const pinnedProjects = [
+    {
+      name: 'fraud-detection-project',
+      description: 'Machine learning model to detect fraudulent transactions using classification algorithms. Built with Python, scikit-learn, and data visualization libraries.',
+      tech: ['Python', 'Scikit-learn', 'Pandas', 'Jupyter']
+    },
+    {
+      name: 'house-price-model',
+      description: 'Predictive model for Nigerian housing market using regression analysis. Analyzes property features to estimate market values.',
+      tech: ['Python', 'NumPy', 'Matplotlib', 'Machine Learning']
+    },
+    {
+      name: 'data-and-ai-portfolio',
+      description: 'Comprehensive collection of data science and AI projects. Showcases end-to-end workflows from data cleaning to model deployment.',
+      tech: ['Python', 'Jupyter', 'Data Analysis', 'ML']
+    },
+    {
+      name: 'laptop-sleep-timer',
+      description: 'Automated solution for managing laptop power settings. Python script that schedules sleep mode to optimize battery life.',
+      tech: ['Python', 'Automation', 'System Programming']
+    }
+  ];
 
   useEffect(() => {
     const fetchGitHubData = async () => {
@@ -49,33 +54,12 @@ const pinnedProjects = useMemo(() => [
     };
 
     fetchGitHubData();
+  }, []);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    setTimeout(() => {
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    }, 100);
-
-
-  }, [pinnedProjects]);
-
-
-  
   const ProjectCard = ({ repo, pinnedInfo, index }) => {
-    
-
     return (
       <div 
-        className="project-card fade-in"
+        className="project-card"
         style={{ animationDelay: `${index * 0.1}s` }}
       >
         <div className="project-header">
@@ -292,8 +276,7 @@ const pinnedProjects = useMemo(() => [
           text-transform: uppercase;
           color: var(--sepia);
           margin-bottom: 2rem;
-          opacity: 0;
-          animation: fadeInUp 0.8s ease-out 0.2s forwards;
+          animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         .hero h1 {
@@ -307,8 +290,7 @@ const pinnedProjects = useMemo(() => [
 
         .hero h1 .line {
           display: block;
-          opacity: 0;
-          animation: fadeInUp 0.8s ease-out forwards;
+          animation: fadeInUp 0.8s ease-out both;
         }
 
         .hero h1 .line:nth-child(1) { animation-delay: 0.3s; }
@@ -325,16 +307,14 @@ const pinnedProjects = useMemo(() => [
           color: var(--text-light);
           font-weight: 400;
           line-height: 1.8;
-          opacity: 0;
-          animation: fadeInUp 0.8s ease-out 0.6s forwards;
+          animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
         .social-links {
           margin-top: 3rem;
           display: flex;
           gap: 1rem;
-          opacity: 0;
-          animation: fadeInUp 0.8s ease-out 0.7s forwards;
+          animation: fadeInUp 0.8s ease-out 0.7s both;
         }
 
         .social-link {
@@ -364,8 +344,7 @@ const pinnedProjects = useMemo(() => [
           grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
           margin-top: 4rem;
-          opacity: 0;
-          animation: fadeInUp 0.8s ease-out 0.8s forwards;
+          animation: fadeInUp 0.8s ease-out 0.8s both;
         }
 
         .stat-item {
@@ -409,6 +388,9 @@ const pinnedProjects = useMemo(() => [
         .section-header {
           max-width: 800px;
           margin-bottom: 5rem;
+          /* FIXED: Removed fade-in, made always visible */
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .section-label {
@@ -435,17 +417,6 @@ const pinnedProjects = useMemo(() => [
           line-height: 1.8;
         }
 
-        .fade-in {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .fade-in.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
         /* Projects */
         .projects-grid {
           display: grid;
@@ -459,6 +430,9 @@ const pinnedProjects = useMemo(() => [
           position: relative;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           box-shadow: 0 2px 12px rgba(139, 115, 85, 0.08);
+          /* FIXED: Removed fade-in, made always visible */
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .project-card:hover {
@@ -508,6 +482,12 @@ const pinnedProjects = useMemo(() => [
           margin-bottom: 1.5rem;
           line-height: 1.75;
           font-size: 1.05rem;
+        }
+
+        .project-card a {
+          background: var(--paper-dark);
+          border-radius: 50%;
+          padding: 0.5rem;
         }
 
         .project-meta {
@@ -561,6 +541,9 @@ const pinnedProjects = useMemo(() => [
           border: 1px solid var(--border);
           transition: all 0.3s;
           box-shadow: 0 2px 8px rgba(139, 115, 85, 0.08);
+          /* FIXED: Made always visible */
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .skill-category:hover {
@@ -615,6 +598,9 @@ const pinnedProjects = useMemo(() => [
           max-width: 700px;
           margin: 0 auto;
           text-align: center;
+          /* FIXED: Made always visible */
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .contact h2 {
@@ -759,19 +745,6 @@ const pinnedProjects = useMemo(() => [
             margin-bottom: 3rem;
           }
         }
-
-        /* Print-like depth */
-        @media (prefers-color-scheme: light) {
-          .project-card,
-          .skill-category,
-          .stat-item,
-          .contact-link {
-            box-shadow: 
-              0 1px 2px rgba(139, 115, 85, 0.06),
-              0 2px 4px rgba(139, 115, 85, 0.06),
-              0 4px 8px rgba(139, 115, 85, 0.06);
-          }
-        }
       `}</style>
 
       <nav>
@@ -857,7 +830,7 @@ const pinnedProjects = useMemo(() => [
                 <span className="stat-label">Followers</span>
               </div>
               <div className="stat-item">
-                <span className="stat-value">4+</span>
+                <span className="stat-value">{repos.length}</span>
                 <span className="stat-label">Featured Projects</span>
               </div>
             </div>
@@ -867,7 +840,7 @@ const pinnedProjects = useMemo(() => [
 
       <section id="work">
         <div className="container">
-          <div className="section-header fade-in">
+          <div className="section-header">
             <div className="section-label">Featured Projects</div>
             <h2 className="section-title">Selected Work</h2>
             <div className="decorative-line" />
@@ -879,6 +852,8 @@ const pinnedProjects = useMemo(() => [
           
           {loading ? (
             <div className="loading">Loading projects from GitHub...</div>
+          ) : repos.length === 0 ? (
+            <div className="loading">No matching projects found.</div>
           ) : (
             <div className="projects-grid">
               {repos.map((repo, index) => {
@@ -894,7 +869,7 @@ const pinnedProjects = useMemo(() => [
 
       <section id="skills">
         <div className="container">
-          <div className="section-header fade-in">
+          <div className="section-header">
             <div className="section-label">Technical Expertise</div>
             <h2 className="section-title">Skills & Tools</h2>
             <div className="decorative-line" />
@@ -905,7 +880,7 @@ const pinnedProjects = useMemo(() => [
           </div>
           
           <div className="skills-grid">
-            <div className="skill-category fade-in">
+            <div className="skill-category">
               <h3>Data Analysis</h3>
               <ul>
                 <li>Python (Pandas, NumPy)</li>
@@ -916,7 +891,7 @@ const pinnedProjects = useMemo(() => [
               </ul>
             </div>
 
-            <div className="skill-category fade-in">
+            <div className="skill-category">
               <h3>Visualization</h3>
               <ul>
                 <li>Matplotlib & Seaborn</li>
@@ -927,7 +902,7 @@ const pinnedProjects = useMemo(() => [
               </ul>
             </div>
 
-            <div className="skill-category fade-in">
+            <div className="skill-category">
               <h3>Machine Learning</h3>
               <ul>
                 <li>Scikit-learn</li>
@@ -938,7 +913,7 @@ const pinnedProjects = useMemo(() => [
               </ul>
             </div>
 
-            <div className="skill-category fade-in">
+            <div className="skill-category">
               <h3>Development</h3>
               <ul>
                 <li>Python Programming</li>
@@ -954,7 +929,7 @@ const pinnedProjects = useMemo(() => [
 
       <section id="contact" className="contact">
         <div className="container">
-          <div className="contact-content fade-in">
+          <div className="contact-content">
             <div className="section-label">Get In Touch</div>
             <h2>Let's work together on something meaningful.</h2>
             <div className="decorative-line" style={{ margin: '2rem auto' }} />
