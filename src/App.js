@@ -7,67 +7,75 @@ import { Github, Mail, Linkedin, Twitter, Youtube, Star, GitFork, Code, ArrowUpR
 // react/no-unstable-nested-components ESLint rule.
 const ProjectCard = ({ repo, pinnedInfo, index }) => {
   return (
-    <div
-      className="project-card"
-      style={{ animationDelay: `${index * 0.1}s` }}
+    <a
+      href={repo.html_url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="project-link"
     >
-      <div className="project-header">
-        <div className="project-number">
-          {String(index + 1).padStart(2, '0')}
+      <div
+        className="project-card"
+        style={{ animationDelay: `${index * 0.1}s` }}
+      >
+        <div className="project-header">
+          <div className="project-number">
+            {String(index + 1).padStart(2, '0')}
+          </div>
+          <a
+            href={repo.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link"
+          >
+            <ArrowUpRight size={20} />
+          </a>
         </div>
-        <a
-          href={repo.html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="project-link"
-        >
-          <ArrowUpRight size={20} />
-        </a>
+
+        <h3>
+          {repo.name
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ')}
+        </h3>
+
+        <p>{pinnedInfo.description}</p>
+
+        <div className="project-meta">
+          {repo.stargazers_count > 0 && (
+            <span className="meta-item">
+              <Star size={14} />
+              {repo.stargazers_count}
+            </span>
+          )}
+          {repo.forks_count > 0 && (
+            <span className="meta-item">
+              <GitFork size={14} />
+              {repo.forks_count}
+            </span>
+          )}
+          {repo.language && (
+            <span className="meta-item">
+              <Code size={14} />
+              {repo.language}
+            </span>
+          )}
+        </div>
+
+        <div className="project-tags">
+          {pinnedInfo.tech.map((tech, i) => (
+            <span key={i} className="tag">{tech}</span>
+          ))}
+        </div>
       </div>
+    </a>
 
-      <h3>
-        {repo.name
-          .split('-')
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(' ')}
-      </h3>
-
-      <p>{pinnedInfo.description}</p>
-
-      <div className="project-meta">
-        {repo.stargazers_count > 0 && (
-          <span className="meta-item">
-            <Star size={14} />
-            {repo.stargazers_count}
-          </span>
-        )}
-        {repo.forks_count > 0 && (
-          <span className="meta-item">
-            <GitFork size={14} />
-            {repo.forks_count}
-          </span>
-        )}
-        {repo.language && (
-          <span className="meta-item">
-            <Code size={14} />
-            {repo.language}
-          </span>
-        )}
-      </div>
-
-      <div className="project-tags">
-        {pinnedInfo.tech.map((tech, i) => (
-          <span key={i} className="tag">{tech}</span>
-        ))}
-      </div>
-    </div>
   );
 };
 
 // ─── Main Component ─────────────────────────────────────────────────────────
 const Portfolio = () => {
-  const [repos, setRepos]   = useState([]);
-  const [stats, setStats]   = useState(null);
+  const [repos, setRepos] = useState([]);
+  const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const githubUsername = '0sinach1';
@@ -97,7 +105,7 @@ const Portfolio = () => {
         'Automated solution for managing laptop power settings. Python script that schedules sleep mode to optimize battery life.',
       tech: ['Python', 'Automation', 'System Programming'],
     },
-  ], []); 
+  ], []);
   const fetchGitHubData = useCallback(async () => {
     try {
       const userResponse = await fetch(
@@ -410,7 +418,11 @@ const Portfolio = () => {
         }
 
         /* ── Projects ── */
-        .projects-grid { display: grid; gap: 2.5rem; }
+        .projects-grid {
+          display: grid;
+          gap: 2.5rem; 
+          grid-auto-rows: 1fr;
+        }
 
         .project-card {
           background: var(--paper);
@@ -419,7 +431,10 @@ const Portfolio = () => {
           position: relative;
           transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
           box-shadow: 0 2px 12px rgba(139,115,85,0.08);
+          width: 59.375rem;
         }
+
+        .project-card > *:last-child { margin-top: auto; }
 
         .project-card:hover {
           border-color: var(--sepia);
@@ -448,6 +463,7 @@ const Portfolio = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          text-decoration: none;
         }
 
         .project-card:hover .project-link {
@@ -685,13 +701,14 @@ const Portfolio = () => {
       <section className="hero">
         <div className="container">
           <div className="hero-ornament" />
-          <div className="hero-label">Data Analyst · Aspiring Data Scientist</div>
+          <div className="hero-label">Data Analyst · Data Scientist</div>
           <h1>
             <span className="line">Turning data</span>
             <span className="line">into insights,</span>
             <span className="line">one story at a time.</span>
           </h1>
           <p className="hero-description">
+            A Data analyst with ML skills.
             Computer Science student passionate about extracting meaning from complexity.
             I build machine learning models, analyze datasets, and create solutions
             that transform information into understanding.
