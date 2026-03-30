@@ -11,6 +11,18 @@ const ProjectCard = ({ repo, pinnedInfo, index }) => {
       className="project-card"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
+      {pinnedInfo.featured && (
+        <span
+          className="tag"
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            right: '1rem',
+          }}
+        >
+          Featured
+        </span>
+      )}
       <div className="project-header">
         <div className="project-number">
           {String(index + 1).padStart(2, '0')}
