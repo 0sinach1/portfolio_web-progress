@@ -7,60 +7,60 @@ import { Github, Mail, Linkedin, Twitter, Youtube, Star, GitFork, Code, ArrowUpR
 // react/no-unstable-nested-components ESLint rule.
 const ProjectCard = ({ repo, pinnedInfo, index }) => {
   return (
-      <div
-        className="project-card"
-        style={{ animationDelay: `${index * 0.1}s` }}
-      >
-        <div className="project-header">
-          <div className="project-number">
-            {String(index + 1).padStart(2, '0')}
-          </div>
-          <a
-            href={repo.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-link"
-          >
-            <ArrowUpRight size={20} />
-          </a>
+    <div
+      className="project-card"
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      <div className="project-header">
+        <div className="project-number">
+          {String(index + 1).padStart(2, '0')}
         </div>
-
-        <h3>
-          {repo.name
-            .split('-')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ')}
-        </h3>
-
-        <p>{pinnedInfo.description}</p>
-
-        <div className="project-meta">
-          {repo.stargazers_count > 0 && (
-            <span className="meta-item">
-              <Star size={14} />
-              {repo.stargazers_count}
-            </span>
-          )}
-          {repo.forks_count > 0 && (
-            <span className="meta-item">
-              <GitFork size={14} />
-              {repo.forks_count}
-            </span>
-          )}
-          {repo.language && (
-            <span className="meta-item">
-              <Code size={14} />
-              {repo.language}
-            </span>
-          )}
-        </div>
-
-        <div className="project-tags">
-          {pinnedInfo.tech.map((tech, i) => (
-            <span key={i} className="tag">{tech}</span>
-          ))}
-        </div>
+        <a
+          href={repo.html_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-link"
+        >
+          <ArrowUpRight size={20} />
+        </a>
       </div>
+
+      <h3>
+        {repo.name
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ')}
+      </h3>
+
+      <p>{pinnedInfo.description}</p>
+
+      <div className="project-meta">
+        {repo.stargazers_count > 0 && (
+          <span className="meta-item">
+            <Star size={14} />
+            {repo.stargazers_count}
+          </span>
+        )}
+        {repo.forks_count > 0 && (
+          <span className="meta-item">
+            <GitFork size={14} />
+            {repo.forks_count}
+          </span>
+        )}
+        {repo.language && (
+          <span className="meta-item">
+            <Code size={14} />
+            {repo.language}
+          </span>
+        )}
+      </div>
+
+      <div className="project-tags">
+        {pinnedInfo.tech.map((tech, i) => (
+          <span key={i} className="tag">{tech}</span>
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -98,16 +98,21 @@ const Portfolio = () => {
       tech: ['Python', 'Automation', 'System Programming'],
     },
     {
-    name: 'lagos-traffic-predictor',
-    description:
-      'Predicts Lagos traffic patterns using historical and real-time data. Built as an interactive Streamlit app for insights and forecasting.',
-    tech: ['Python', 'Streamlit', 'Data Analysis', 'ML'],
-    links: {
-      live: 'https://lagos-traffic-elvis.streamlit.app',
-      github: null, // fallback to repo.html_url
+      name: 'lagos-traffic-predictor',
+      description:
+        'Predicts Lagos traffic patterns using historical and real-time data. Built as an interactive Streamlit app for insights and forecasting.',
+      tech: ['Python', 'Streamlit', 'Data Analysis', 'ML'],
+      links: {
+        live: 'https://lagos-traffic-elvis.streamlit.app',
+        github: null, // fallback to repo.html_url
+      },
     },
-  },
   ], []);
+
+  const orderedRepos = pinnedProjects
+    .map(p => repos.find(r => r.name === p.name))
+    .filter(Boolean);
+
   const fetchGitHubData = useCallback(async () => {
     try {
       const userResponse = await fetch(
@@ -772,11 +777,17 @@ const Portfolio = () => {
             <div className="loading">No matching projects found.</div>
           ) : (
             <div className="projects-grid">
-              {repos.map((repo, index) => {
+              {orderedRepos.map((repo, index) => {
                 const pinnedInfo = pinnedProjects.find(p => p.name === repo.name);
-                return pinnedInfo ? (
-                  <ProjectCard key={repo.id} repo={repo} pinnedInfo={pinnedInfo} index={index} />
-                ) : null;
+
+                return (
+                  <ProjectCard
+                    key={repo.id}
+                    repo={repo}
+                    pinnedInfo={pinnedInfo}
+                    index={index}
+                  />
+                );
               })}
             </div>
           )}
