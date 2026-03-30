@@ -97,6 +97,12 @@ const Portfolio = () => {
         'Automated solution for managing laptop power settings. Python script that schedules sleep mode to optimize battery life.',
       tech: ['Python', 'Automation', 'System Programming'],
     },
+    {
+    name: 'lagos-traffic-predictor',
+    description:
+      'Predicts Lagos traffic patterns using historical and real-time data. Built as an interactive Streamlit app for insights and forecasting.',
+    tech: ['Python', 'Streamlit', 'Data Analysis', 'ML'],
+  },
   ], []);
   const fetchGitHubData = useCallback(async () => {
     try {
