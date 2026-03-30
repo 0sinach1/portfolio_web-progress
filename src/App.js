@@ -102,7 +102,10 @@ const Portfolio = () => {
     description:
       'Predicts Lagos traffic patterns using historical and real-time data. Built as an interactive Streamlit app for insights and forecasting.',
     tech: ['Python', 'Streamlit', 'Data Analysis', 'ML'],
-    live: 'https://lagos-traffic-elvis.streamlit.app',
+    links: {
+      live: 'https://lagos-traffic-elvis.streamlit.app',
+      github: null, // fallback to repo.html_url
+    },
   },
   ], []);
   const fetchGitHubData = useCallback(async () => {
