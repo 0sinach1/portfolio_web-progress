@@ -423,7 +423,7 @@ const Portfolio = () => {
           position: relative;
           transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
           box-shadow: 0 2px 12px rgba(139,115,85,0.08);
-          width: 59.375rem;
+          width: 100%;
         }
 
         .project-card > *:last-child { margin-top: auto; }
