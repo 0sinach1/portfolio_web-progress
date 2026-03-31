@@ -6,6 +6,10 @@ import { Github, Mail, Linkedin, Twitter, Youtube, Star, GitFork, Code, ArrowUpR
 // every render, breaking reconciliation and triggering the
 // react/no-unstable-nested-components ESLint rule.
 const ProjectCard = ({ repo, pinnedInfo, index }) => {
+  
+  const githubLink = pinnedInfo.links?.github || repo.html_url;
+  const liveLink = pinnedInfo.links?.live;
+  
   return (
     <div
       className="project-card"
@@ -27,14 +31,29 @@ const ProjectCard = ({ repo, pinnedInfo, index }) => {
         <div className="project-number">
           {String(index + 1).padStart(2, '0')}
         </div>
-        <a
-          href={repo.html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="project-link"
-        >
-          <ArrowUpRight size={20} />
-        </a>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          {liveLink && (
+            <a
+              href={liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+              title="Live Demo"
+            >
+              <ArrowUpRight size={20} />
+            </a>
+          )}
+
+          <a
+            href={githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link"
+            title="GitHub Repo"
+          >
+            <Github size={18} />
+          </a>
+        </div>
       </div>
 
       <h3>
