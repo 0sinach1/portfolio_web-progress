@@ -857,7 +857,7 @@ const Portfolio = () => {
               <a href="mailto:osimachifeanyi@gmail.com" className="contact-link">
                 <Mail size={18} /> osimachifeanyi@gmail.com
               </a>
-              <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noopener noreferrer" className="contact-link">
+              <a href={`https://github.com/${0sinach1}`} target="_blank" rel="noopener noreferrer" className="contact-link">
                 <Github size={18} /> github.com/{githubUsername}
               </a>
               <a href="https://www.linkedin.com/in/osinachi-ifeanyi" target="_blank" rel="noopener noreferrer" className="contact-link">
