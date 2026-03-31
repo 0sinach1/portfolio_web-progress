@@ -7,12 +7,6 @@ import { Github, Mail, Linkedin, Twitter, Youtube, Star, GitFork, Code, ArrowUpR
 // react/no-unstable-nested-components ESLint rule.
 const ProjectCard = ({ repo, pinnedInfo, index }) => {
   return (
-    <a
-      href={repo.html_url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="project-link"
-    >
       <div
         className="project-card"
         style={{ animationDelay: `${index * 0.1}s` }}
@@ -67,8 +61,6 @@ const ProjectCard = ({ repo, pinnedInfo, index }) => {
           ))}
         </div>
       </div>
-    </a>
-
   );
 };
 
