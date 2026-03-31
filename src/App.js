@@ -6,10 +6,10 @@ import { Github, Mail, Linkedin, Twitter, Youtube, Star, GitFork, Code, ArrowUpR
 // every render, breaking reconciliation and triggering the
 // react/no-unstable-nested-components ESLint rule.
 const ProjectCard = ({ repo, pinnedInfo, index }) => {
-  
+
   const githubLink = pinnedInfo.links?.github || repo.html_url;
   const liveLink = pinnedInfo.links?.live;
-  
+
   return (
     <div
       className="project-card"
@@ -805,7 +805,9 @@ const Portfolio = () => {
           {loading ? (
             <div className="loading">Loading projects from GitHub…</div>
           ) : repos.length === 0 ? (
-            <div className="loading">No matching projects found.</div>
+            <div className="loading">
+              No featured projects yet — more coming soon.
+            </div>
           ) : (
             <div className="projects-grid">
               {orderedRepos.map((repo, index) => {
